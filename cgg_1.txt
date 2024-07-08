@@ -1,0 +1,76 @@
+Questions from Kean Loon the HPC/AI manager
+
+0) Asked about Monte-Carlo for estimating Pi.
+Me: Rejection sampling.
+The algorithm introduced by JomaTech.
+Generate x and y randomly. If x^2 + y^2 < 1, then within unit quadrant. Increment count.
+Else do nothing.
+Repeat N times. Pi/4 = count/N.
+
+0.a) How to estimate your error/uncertainty, assuming pi unknown.
+Me: Standard deviation...?
+Google: should probably use standard error of the estimate, same formula for std dev
+but use (Y - regression analysis value), instead of mean.
+
+
+1) Is there a faster way to find index of element?
+Me: If sorted, yes. Binary search. Guy didn't want to use std::search, so implement binSearch meself.
+
+/*
+int binSearch(const std::vector<int>& arr, int start, int stop, int x) {
+	if (stop < start) return -1;
+	int mid = (stop - start)/2 + start;
+	int mid_x = arr[mid];
+
+	if (x > mid_x) binSearch(arr, mid, stop, x);
+	else if(x < mid_x) binSearch(arr, start, mid, x);
+	else return mid;
+}
+int findIndexSorted(const std::vector<int>& sortedArr, int x) {
+	return binSearch(sortedArr, 0, sortedArr.size() - 1, x);
+}
+*/
+
+1.a) Can it be done in O(1)?
+He somehow thinks it can. But Googling suggests otherwise. (!)
+
+2) Notice any problems with RMS implementation?
+Me: Could be dividing by zero, when all elements are 0.
+
+2.a) Sometimes user might report that results are not expected. Why?
+Me: Lack of precision. Use double instead of float.
+
+2.b) Another problem that he saw.
+Hindsight: Might be floating-point overflow... (!)
+
+3) Sampling rate 4ms, how to remove signals above 125Hz
+At first, I suggested low-pass filtering.
+Me: Sampling freq = 1/4ms = 250Hz.
+Max freq without aliasing is 125Hz. So no need to do anything.
+Almost got played here.
+
+4) mean smoothing = moving average.
+Them: Should return the total average if window > array.
+
+4.a) Complexity if using Gaussian filter? 
+Me: I think I said O(n^2) but its actually O(n x m). (!)
+
+4.b) Can it be faster?
+Me: Didn't know of any (!)
+Google: If we using 2D Gaussian, then separable filter (2 x 1D filters)
+can reduce from O((n x m)^2) to O((n x n x m)).
+OR
+we can use FFT and do the convolution is frequency-space, O(nlogn). 
+
+4.c) n numbers, find if an x > b times.
+Me: Hash table, if new element, init count = 0, else count++. O(n).
+Basically histogram building.
+Them: Any faster way? 
+Me: Don't think so...
+
+5) How to do linear fitting of 2D points? 
+Me: ... (!)
+Google: Linear regression. Welcome back to Machine Learning son.
+Gradient Descent would be the cool way. But Ordinary Least Squares should work too.
+Beta=X^(dagger)Y = (X^T X)^(-1) X^T Y
+X = N x 2 (last column are all one's), Y = N x 1, Beta = 2 x 1

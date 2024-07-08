@@ -1,0 +1,21 @@
+seismic
+internal tools (geophysicist)
+new modules
+
+shortlist
+3 rounds
+online assessment (3-5days)
+
+hr & hiring manager (subsurface imaging (earth several km down) (SG), more stuff like HPC AI in the future.)
+Ships and sea and trucks on land, send sound waves into earth.
+Huge data, 1TB.
+Manager leads HPC team.
+Me Graphical, Data Viz.
+Build and transform data in real-time.
+8 people (SG), 3 for graphical.
+5 for HPC.
+Needs a bit of signal processing and not just graphics.
+Asking a lot of questions.
+
+team lead
+HoD

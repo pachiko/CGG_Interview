@@ -1,0 +1,33 @@
+
+6) point in triangle test?
+if 3D, signed volume of tetrahedron. Scalar triple product
+V = 1/2 x normal_of_triangle.(p1-p0)x(p2-p0) 
+V_point = 1/2 x normal_of_triangle.(p1-p0)x(pp-p0) 
+
+if 2D, signed area of triangle
+A = 1/2 x |(p1-p0)x(p2-p0)|
+A_point = 1/2 x |(p1-p0)x(pp-p0)|
+
+Ratio of areas or volumes gives the barycentric coordinates
+calculate u,v,w and make sure 0 to 1.
+
+Can also do line tests:
+y = mx + b (slope-intercept form of line)
+y = dy/dx*x + b
+dx*y = dy*x + dx*b
+dy*x - dx*y + dx*b = 0 (general form of line)
+
+if > 0, right side of line (outside). assume CCW vertices
+
+7) square root (Newton's root-finding method)
+f'(x_n) = (f(x_n+1) - f(x_n)) / (x_n+1 - x_n)
+	 = (0 - f(x_n)) / (x_n+1 - x_n) 
+x_n+1 = x_n - f(x_n)/f'(x_n)
+Let x = sqrt(y)
+x^2 = y
+f(x) = x^2 - y = 0
+2x = dy/dx
+
+x_n+1 = x_n - f(x_n)/(2*x_n)
+
+
